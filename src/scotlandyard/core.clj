@@ -199,8 +199,7 @@
    196 {:taxi #{183 184 197}}
    197 {:taxi #{184 195 196}}
    198 {:taxi #{159 186 187 199}}
-   199 {:taxi #{171 188 198} :bus #{128 161}}
-   })
+   199 {:taxi #{171 188 198} :bus #{128 161}}})
 
 (def modes #{:taxi :bus :train :boat})
 
@@ -242,7 +241,23 @@
    reverse))
 
 
-;; lame bus routes (same as taxi)
+;; Lame bus routes (same as taxi)
 ;; tricky links (around 75, 76, 129, etc.)
 ;; max per mode, max all modes
 ;; - distant or twisty busses make for easy mistakes
+
+
+;; stats:
+;; 345 taxi routes
+;; 99 bus routes
+;; 20 train routes
+;; 3 boat routes
+;; 467 total routes
+;; 30 lame bus routes
+;;
+;; 199 total nodes
+;; 135 taxi only nodes
+;; 46 taxi & bus only accessible nodes
+;; 62 bus accessible nodes
+;; 14 train accessible nodes
+;; 4 boat accessible nodes
