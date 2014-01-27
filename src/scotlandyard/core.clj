@@ -1,4 +1,5 @@
-(ns scotlandyard.core)
+(ns scotlandyard.core
+  (:require [clojure.set :as set]))
 
 (def board
   {1 {:taxi #{8 9} :bus #{58 46} :train #{46}}
@@ -239,6 +240,33 @@
                   k)))
    sort
    reverse))
+
+(defn any-mode [loc]
+  (reduce into (vals loc)))
+
+(defn board-exclude [brd excl]
+  (set/difference (set (keys brd))
+                  excl))
+
+(defn travel [brd mode start]
+  (reduce #(let [mode (get {:any any-mode} mode mode)]
+             (into %1 (-> brd
+                          (get %2)
+                          (mode))))
+          #{}
+          start))
+
+(comment
+  (->>
+   #{1 99 3}
+   (board-exclude board)
+   (travel board :train)
+   (travel board :bus)
+   (travel board :bus)
+   (travel board :taxi)
+   (travel board :train)
+   ((juxt count sort)))
+  )
 
 
 ;; Lame bus routes (same as taxi)
