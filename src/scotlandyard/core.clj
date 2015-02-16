@@ -202,7 +202,24 @@
    198 {:taxi #{159 186 187 199}}
    199 {:taxi #{171 188 198} :bus #{128 161}}})
 
+(def num-turns 24)
+
+(def reveal-turns #{3 8 13 18 24})
+
 (def modes #{:taxi :bus :train :boat})
+
+(def starting-stations #{13 26 29 34 50 53 91
+                         94 103 112 117 132 138
+                         141 155 174 197 198})
+
+(def detective-tickets {:taxi 10 :bus 8 :train 4})
+
+(defn mr-x-tickets [n-detectives]
+  {:taxi 4
+   :bus 3
+   :train 3
+   :double 2
+   :black n-detectives})
 
 (defn validate [b]
   (doseq [[src adsts] b
